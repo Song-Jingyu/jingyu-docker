@@ -16,7 +16,7 @@ Help()
 ############################################################
 # Default values                                           #
 ############################################################
-TAG=jingyuso/mmdet3d:latest
+TAG=jingyuso/mmdet3d:latest # TODO: change this tag
 
 while getopts ":t:h" arg; do
     case $arg in

@@ -9,9 +9,9 @@ docker run -it \
     -u $USER_ID:$GROUP_ID \
     -v $PASSWD_FILE:/etc/passwd:ro \
     -v $GROUP_FILE:/etc/group:ro \
-    -v /mnt/ws-frb/users/jingyuso/docker_data/docker/home:$HOME \
+    -v /mnt/ws-frb/users/jingyuso/docker_data/docker/home:$HOME \ # TODO: change the directory
     -v /mnt:/mnt \
-    --name jingyuso_mmdet3d \
+    --name jingyuso_mmdet3d \ # TODO: change the docker container name
     --gpus all \
     --ipc=host \
-    jingyuso/mmdet3d:latest
+    jingyuso/mmdet3d:latest # TODO: change this image name accordingly
