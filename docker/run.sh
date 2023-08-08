@@ -11,7 +11,7 @@ docker run -it \
     -v $GROUP_FILE:/etc/group:ro \
     -v /mnt/ws-frb/users/jingyuso/docker_data/docker/home:$HOME \
     -v /mnt:/mnt \
-    --name jingyuso_mmdet3d \
+    --name jingyuso_mmdet3d_1 \
     --gpus all \
     --ipc=host \
     jingyuso/mmdet3d:latest # TODO: change this image name, container name and home directory accordingly
