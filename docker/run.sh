@@ -9,9 +9,9 @@ docker run -it \
     -u $USER_ID:$GROUP_ID \
     -v $PASSWD_FILE:/etc/passwd:ro \
     -v $GROUP_FILE:/etc/group:ro \
-    -v /mnt/ws-frb/users/jingyuso/docker_data/docker/home:$HOME \
+    -v /mnt/ws-frb/users/jingyuso/kd_project/dockers/unidistill_docker/docker/home:$HOME \
     -v /mnt:/mnt \
-    --name jingyuso_mmdet3d \
+    --name jingyuso_kd_unidistill \
     --gpus all \
     --ipc=host \
-    jingyuso/mmdet3d:latest # TODO: change this image name, container name and home directory accordingly
+    jingyuso/kd_unidistill:latest # TODO: change this image name, container name and home directory accordingly
