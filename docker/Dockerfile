@@ -15,15 +15,14 @@ RUN apt-get update && \
         libxext6 \
         tmux \
         curl \
-        gedit \
+        gedit
 
 
 
 # python base
 RUN apt-get install -y --no-install-recommends \
         wget \
-        ca-certificates \
-        python3
+        ca-certificates
 
 # from https://stackoverflow.com/questions/78148051/dockerfile-or-image-for-running-ros-noetic-with-nvidia-gpu
 ENV UBUNTU_RELEASE=focal
@@ -33,12 +32,12 @@ RUN wget --output-document - \
 
 # Install ROS.
 RUN apt-get update && apt-get install -y \
-ros-noetic-desktop-full \
-&& rm -rf /var/lib/apt/lists/*
+        ros-noetic-desktop-full \
+        && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update && apt-get install -y \
     python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential\
- && rm -rf /var/lib/apt/lists/*
+        && rm -rf /var/lib/apt/lists/*
 
 # Initialize rosdep
 RUN rosdep init
