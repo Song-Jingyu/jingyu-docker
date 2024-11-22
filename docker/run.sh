@@ -6,12 +6,13 @@ GROUP_FILE=$(mktemp) && echo $(getent group $GROUP_ID) > $GROUP_FILE
 
 
 xhost +local:
-docker run -it --rm \
+docker run -it \
     -e HOME \
     -u $USER_ID:$GROUP_ID \
     -v $PASSWD_FILE:/etc/passwd:ro \
     -v $GROUP_FILE:/etc/group:ro \
     -v /mnt/ws-frb/users/jingyuso/navigation/jingyu-docker/docker/home:$HOME \
+    -v /home/jingyuso/Downloads:/tmp/Downloads \
     -v /mnt:/mnt \
     --name jingyuso_ros_noetic \
     --gpus all \

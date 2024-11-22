@@ -18,7 +18,6 @@ RUN apt-get update && \
         gedit
 
 
-
 # python base
 RUN apt-get install -y --no-install-recommends \
         wget \
@@ -42,6 +41,42 @@ RUN apt-get update && apt-get install -y \
 # Initialize rosdep
 RUN rosdep init
 RUN rosdep update
+
+
+# Kimera
+RUN apt-get update
+
+RUN apt-get install ros-noetic-image-geometry ros-noetic-pcl-ros ros-noetic-cv-bridge
+
+RUN apt-get install -y --no-install-recommends apt-utils
+RUN apt-get install -y \
+      cmake build-essential unzip pkg-config autoconf \
+      libboost-all-dev \
+      libjpeg-dev libpng-dev libtiff-dev \
+      libvtk7-dev libgtk-3-dev \
+      libatlas-base-dev gfortran \
+      libparmetis-dev \
+      python3-wstool python3-catkin-tools \
+      ros-noetic-hector-trajectory-server \
+      libeigen3-dev
+
+RUN apt-get install libtbb-dev
+
+# Set working directory
+WORKDIR /root
+
+# Clone Pangolin repository
+RUN git clone https://github.com/stevenlovegrove/Pangolin.git
+
+# Change to Pangolin directory
+WORKDIR /root/Pangolin
+
+# Create build directory and navigate into it
+RUN mkdir build
+WORKDIR /root/Pangolin/build
+
+# Configure and build Pangolin
+RUN cmake .. && make && make install
 
 # make python modules in /root/.local visible to non-root users
 RUN find /root -type d -exec chmod 755 {} +
