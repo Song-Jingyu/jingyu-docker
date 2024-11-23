@@ -14,7 +14,7 @@ docker run -it \
     -v /mnt/ws-frb/users/jingyuso/navigation/jingyu-docker/docker/home:$HOME \
     -v /home/jingyuso/Downloads:/tmp/Downloads \
     -v /mnt:/mnt \
-    --name jingyuso_ros_noetic \
+    --name jingyuso_lvi \
     --gpus all \
     --ipc=host \
      -e DISPLAY \
@@ -22,4 +22,4 @@ docker run -it \
     -e XDG_RUNTIME_DIR=/run/user/$USER_ID \
     -v /run/user/$USER_ID:/run/user/$USER_ID \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
-    jingyuso/ros-noetic:latest # TODO: change this image name, container name and home directory accordingly
+    jingyuso/ros-lvi:latest # TODO: change this image name, container name and home directory accordingly

@@ -82,3 +82,20 @@ RUN cmake .. && make && make install
 RUN find /root -type d -exec chmod 755 {} +
 
 RUN rm -rf /tmp/* /var/lib/apt/lists/*
+
+RUN apt-get update
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository ppa:borglab/gtsam-release-4.0 -y
+RUN apt-get update
+RUN apt install libgtsam-dev libgtsam-unstable-dev -y
+
+RUN apt-get install -y libgoogle-glog-dev
+RUN apt-get install -y libatlas-base-dev
+
+WORKDIR /root
+RUN wget -O ./ceres.zip https://github.com/ceres-solver/ceres-solver/archive/1.14.0.zip
+RUN unzip ceres.zip
+WORKDIR /root/ceres-solver-1.14.0
+RUN mkdir ceres-bin && cd ceres-bin
+WORKDIR /root/ceres-solver-1.14.0/ceres-bin
+RUN cmake .. && make -j8 && make install

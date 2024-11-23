@@ -16,7 +16,7 @@ Help()
 ############################################################
 # Default values                                           #
 ############################################################
-TAG=jingyuso/ros-noetic:latest # TODO: change this tag
+TAG=jingyuso/ros-lvi:latest # TODO: change this tag
 
 while getopts ":t:h" arg; do
     case $arg in
