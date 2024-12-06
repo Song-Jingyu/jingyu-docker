@@ -48,6 +48,9 @@ RUN apt-get update
 
 RUN apt-get install ros-noetic-image-geometry ros-noetic-pcl-ros ros-noetic-cv-bridge
 
+# install ros velodyne package
+RUN apt-get install -y ros-noetic-velodyne-pointcloud
+
 RUN apt-get install -y --no-install-recommends apt-utils
 RUN apt-get install -y \
       cmake build-essential unzip pkg-config autoconf \
@@ -59,6 +62,7 @@ RUN apt-get install -y \
       python3-wstool python3-catkin-tools \
       ros-noetic-hector-trajectory-server \
       libeigen3-dev
+
 
 RUN apt-get install libtbb-dev
 
@@ -76,7 +80,7 @@ RUN mkdir build
 WORKDIR /root/Pangolin/build
 
 # Configure and build Pangolin
-RUN cmake .. && make && make install
+RUN cmake .. && make -j8 && make install
 
 # make python modules in /root/.local visible to non-root users
 RUN find /root -type d -exec chmod 755 {} +
@@ -99,3 +103,4 @@ WORKDIR /root/ceres-solver-1.14.0
 RUN mkdir ceres-bin && cd ceres-bin
 WORKDIR /root/ceres-solver-1.14.0/ceres-bin
 RUN cmake .. && make -j8 && make install
+WORKDIR /home/jingyuso
